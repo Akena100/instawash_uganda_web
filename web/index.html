@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided by `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Insta Wash Uganda - Your 360 Mobile Cleaning Partner">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Insta Wash Uganda">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>Insta Wash Uganda</title>
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Firebase Configuration -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js"></script>
+
+  <script>
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBZZJzsqxPD5C7Q2F62f5TYQhFBX5Zhpv4",
+      authDomain: "instawash-uganda.firebaseapp.com",
+      projectId: "instawash-uganda",
+      storageBucket: "instawash-uganda.firebasestorage.app",
+      messagingSenderId: "820639614431",
+      appId: "1:820639614431:web:57b0a3e8576767d08ab06a",
+      measurementId: "G-9PWJ92ZDVN"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+
+  <!-- Google Maps JavaScript API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8_9t2HGfG4vZ-7syl2INMBXzKMIndbr0"></script>
+
+  <!-- Loading Indicator Styles -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    #loading-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      animation: fadeInLoading 0.5s ease-in;
+    }
+
+    #loading-container.hide {
+      animation: fadeOutLoading 0.6s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes fadeInLoading {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOutLoading {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+
+    .loading-content {
+      text-align: center;
+      animation: slideInUp 0.6s ease-out;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo-container {
+      margin-bottom: 40px;
+      animation: scaleIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .logo-box {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #0066CC 0%, #0052A3 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      box-shadow: 0 10px 40px rgba(0, 102, 204, 0.25);
+    }
+
+    .logo-text {
+      font-size: 36px;
+      font-weight: 800;
+      color: white;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    }
+
+    .brand-name {
+      margin-bottom: 20px;
+    }
+
+    .brand-name h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    }
+
+    .brand-name p {
+      font-size: 14px;
+      color: #777777;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    .progress-container {
+      width: 280px;
+      height: 6px;
+      background: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 30px auto;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #0066CC 0%, #00AA33 50%, #FFBB00 100%);
+      border-radius: 10px;
+      animation: progress 2s ease-in-out infinite;
+      box-shadow: 0 0 15px rgba(0, 102, 204, 0.6);
+    }
+
+    @keyframes progress {
+      0% {
+        width: 0%;
+      }
+      50% {
+        width: 80%;
+      }
+      100% {
+        width: 95%;
+      }
+    }
+
+    .loading-text {
+      font-size: 14px;
+      color: #666666;
+      font-weight: 500;
+      margin-top: 20px;
+      letter-spacing: 0.5px;
+      animation: fadeInText 1s ease-out;
+    }
+
+    @keyframes fadeInText {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .dot-animation {
+      display: inline-block;
+      animation: dotPulse 1.5s ease-in-out infinite;
+    }
+
+    .dot-animation:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .dot-animation:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes dotPulse {
+      0%, 100% {
+        opacity: 0.4;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* Modern dots animation */
+    .loading-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0066CC, #00AA33);
+      animation: bounce 1.4s ease-in-out infinite;
+    }
+
+    .dot:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes bounce {
+      0%, 80%, 100% {
+        opacity: 0.6;
+        transform: translateY(0);
+      }
+      40% {
+        opacity: 1;
+        transform: translateY(-10px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Indicator -->
+  <div id="loading-container">
+    <div class="loading-content">
+      <div class="logo-container">
+        <div class="logo-box">
+          <span class="logo-text">IW</span>
+        </div>
+      </div>
+      <div class="brand-name">
+        <h1>Insta Wash Uganda</h1>
+        <p>Loading your cleaning partner...</p>
+      </div>
+      <div class="progress-container">
+        <div class="progress-bar"></div>
+      </div>
+      <div class="loading-text">
+        Preparing the app<span class="loading-dots">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
+
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+  <script src="flutter_bootstrap.js" async></script>
+
+  <!-- Hide Loading Indicator Script -->
+  <script>
+    const loadingContainer = document.getElementById('loading-container');
+
+    function hideLoadingIndicator() {
+      if (!loadingContainer || loadingContainer.style.display === 'none') {
+        return;
+      }
+      loadingContainer.classList.add('hide');
+      setTimeout(() => {
+        loadingContainer.style.display = 'none';
+      }, 600);
+    }
+
+    // Wait for Flutter to render its first frame before removing the loader.
+    window.addEventListener('flutter-first-frame', hideLoadingIndicator);
+
+    // Fallback: Hide loading indicator after 30 seconds if Flutter never fires the event.
+    setTimeout(hideLoadingIndicator, 30000);
+  </script>
+</body>
+</html>
+
+
+
