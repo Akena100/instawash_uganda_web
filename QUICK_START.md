@@ -58,7 +58,7 @@ The app will open in your default browser. You can now:
 ### 4. **Other Pages**
 - ✓ Auto Cleaning (packages & timeline)
 - ✓ Laundry (subscription plans)
-- ✓ Waste Management (Insta Trash)
+- ✓ WASTE MANAGEMENT (Insta Trash)
 - ✓ Contact (form validation)
 
 ---
@@ -173,7 +173,7 @@ Press **D** in the Flutter console
 ### Colors
 ```dart
 AppColors.primary         // #0066CC (Blue)
-AppColors.secondary       // #00AA33 (Green)
+AppColors.info       // #00AA33 (Green)
 AppColors.accent          // #FFBB00 (Gold)
 AppColors.white           // #FFFFFF
 AppColors.darkGrey        // #333333
@@ -201,7 +201,7 @@ Home (/)
 ├─ Services (/services)
 ├─ Auto Cleaning (/auto-cleaning)
 ├─ Laundry (/laundry)
-├─ Waste Management (/waste)
+├─ WASTE MANAGEMENT (/waste)
 ├─ Contact (/contact)
 └─ Booking (/booking)
 ```

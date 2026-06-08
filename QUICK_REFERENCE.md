@@ -75,7 +75,7 @@ dart analyze
 ```dart
 // Use in your widgets
 AppColors.primary        // #0066CC (Blue)
-AppColors.secondary      // #00AA33 (Green)
+AppColors.info      // #00AA33 (Green)
 AppColors.accent         // #FFBB00 (Gold)
 AppColors.white          // #FFFFFF
 AppColors.darkGrey       // #333333
@@ -141,7 +141,7 @@ final selectedService = ref.watch(selectedServiceProvider);
 ### Updating State
 ```dart
 ref.read(selectedServiceProvider.notifier).state = newService;
-ref.read(serviceFilterProvider.notifier).state = "Residential";
+ref.read(serviceFilterProvider.notifier).state = "RESIDENTIAL";
 ```
 
 ### Creating Providers

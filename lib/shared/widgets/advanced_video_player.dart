@@ -124,7 +124,7 @@ class _AdvancedVideoPlayerState extends State<AdvancedVideoPlayer> {
                       progressIndicatorColor: AppColors.primary,
                       progressColors: ProgressBarColors(
                         playedColor: AppColors.primary,
-                        handleColor: AppColors.secondary,
+                        handleColor: AppColors.info,
                         bufferedColor: Colors.grey.withOpacity(0.3),
                         backgroundColor: Colors.black12,
                       ),

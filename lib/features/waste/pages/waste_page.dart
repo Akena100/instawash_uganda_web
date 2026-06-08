@@ -68,7 +68,7 @@ class WastePage extends StatelessWidget {
                       ),
                       const SizedBox(height: 12),
                       Text(
-                        'Eco-friendly waste management & recycling solutions',
+                        'Eco-friendly WASTE MANAGEMENT & recycling solutions',
                         style: GoogleFonts.poppins(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
@@ -100,7 +100,7 @@ class WastePage extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   Text(
-                    'Our waste management service is designed to help individuals and businesses responsibly manage their waste while protecting the environment.',
+                    'Our WASTE MANAGEMENT service is designed to help individuals and businesses responsibly manage their waste while protecting the environment.',
                     style: GoogleFonts.poppins(
                       fontSize: 15,
                       fontWeight: FontWeight.w400,
@@ -173,7 +173,7 @@ class WastePage extends StatelessWidget {
                       _WasteCategoryCard(
                         icon: '🥫',
                         title: 'Metals',
-                        color: AppColors.secondary,
+                        color: AppColors.info,
                       ),
                       _WasteCategoryCard(
                         icon: '🪟',
@@ -183,12 +183,12 @@ class WastePage extends StatelessWidget {
                       _WasteCategoryCard(
                         icon: '🛍️',
                         title: 'Plastics',
-                        color: AppColors.secondary,
+                        color: AppColors.info,
                       ),
                       _WasteCategoryCard(
                         icon: '🍃',
                         title: 'Organic Waste',
-                        color: AppColors.secondary,
+                        color: AppColors.info,
                       ),
                       _WasteCategoryCard(
                         icon: '🇪',
@@ -352,7 +352,7 @@ class WastePage extends StatelessWidget {
                       onPressed: _launchWhatsapp,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.white,
-                        foregroundColor: AppColors.secondary,
+                        foregroundColor: AppColors.info,
                       ),
                       child: Text(
                         'Subscribe Now',
@@ -509,9 +509,9 @@ class __WastePlanCardState extends State<_WastePlanCard> {
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: widget.isPopular
-                ? AppColors.secondary
+                ? AppColors.info
                 : (_isHovered
-                    ? AppColors.secondary
+                    ? AppColors.info
                     : borderColor),
             width: widget.isPopular || _isHovered ? 2 : 1,
           ),
@@ -528,7 +528,7 @@ class __WastePlanCardState extends State<_WastePlanCard> {
                     vertical: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: AppColors.secondary,
+                    color: AppColors.info,
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
@@ -567,7 +567,7 @@ class __WastePlanCardState extends State<_WastePlanCard> {
                         children: [
                           const Icon(
                             Icons.check_circle,
-                            color: AppColors.secondary,
+                            color: AppColors.info,
                             size: 18,
                           ),
                           const SizedBox(width: 8),
@@ -592,7 +592,7 @@ class __WastePlanCardState extends State<_WastePlanCard> {
                 child: ElevatedButton(
                   onPressed: widget.onSubscribe,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.secondary,
+                    backgroundColor: AppColors.info,
                   ),
                   child: Text(
                     'Subscribe',
@@ -628,7 +628,7 @@ class _ImpactStat extends StatelessWidget {
           style: GoogleFonts.poppins(
             fontSize: 40,
             fontWeight: FontWeight.w800,
-            color: AppColors.secondary,
+            color: AppColors.info,
           ),
         ),
         const SizedBox(height: 8),

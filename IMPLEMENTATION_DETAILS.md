@@ -30,7 +30,7 @@
   - Elite: Unlimited service
 - **Feature Checklist** - Service highlights
 
-#### 5. **Waste Management Page** (`/waste`)
+#### 5. **WASTE MANAGEMENT Page** (`/waste`)
 - **Overview Cards** - Service benefits
 - **Waste Categories** - 8 types handled
 - **Subscription Plans** - Home, Business, Enterprise tiers
@@ -131,7 +131,7 @@ Routes are centralized in `core/router/app_router.dart`:
 /services            → Services Catalog
 /auto-cleaning       → Auto Cleaning
 /laundry             → Laundry Service
-/waste               → Waste Management
+/waste               → WASTE MANAGEMENT
 /contact             → Contact Us
 /booking             → Booking System
 ```
@@ -231,7 +231,7 @@ lib/
 ```dart
 // Get theme anywhere
 AppColors.primary
-AppColors.secondary
+AppColors.info
 GoogleFonts.poppins(...)
 ```
 
@@ -340,8 +340,8 @@ When adding features:
 ## 📞 Support
 
 **Email**: info@intawashuganda.ug  
-**Phone**: +256 700 123456  
-**WhatsApp**: +256 700 123456
+**Phone**: +256 741 074382  
+**WhatsApp**: +256 741 074382
 
 ---
 

@@ -5,6 +5,7 @@ class Service {
   final String category;
   final String icon;
   final String imageUrl;
+  final List<String> additionalImages;
   final double price;
   final double rating;
   final int reviews;
@@ -18,6 +19,7 @@ class Service {
     required this.category,
     required this.icon,
     required this.imageUrl,
+    this.additionalImages = const [],
     required this.price,
     required this.rating,
     required this.reviews,
@@ -33,6 +35,7 @@ class Service {
       category: json['category'] as String,
       icon: json['icon'] as String,
       imageUrl: json['imageUrl'] as String,
+      additionalImages: json['additionalImages'] != null ? List<String>.from(json['additionalImages'] as List) : [],
       price: (json['price'] as num).toDouble(),
       rating: (json['rating'] as num).toDouble(),
       reviews: json['reviews'] as int,
@@ -49,6 +52,7 @@ class Service {
       'category': category,
       'icon': icon,
       'imageUrl': imageUrl,
+      'additionalImages': additionalImages,
       'price': price,
       'rating': rating,
       'reviews': reviews,

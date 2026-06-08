@@ -206,6 +206,52 @@ class ServiceDetailPage extends ConsumerWidget {
                     ),
                   ),
                   const SizedBox(height: 32),
+                  // Additional Images Gallery
+                  if (service.additionalImages.isNotEmpty)
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Gallery',
+                          style: GoogleFonts.poppins(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                            color: primaryText,
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        GridView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: isMobile ? 2 : 3,
+                            crossAxisSpacing: 12,
+                            mainAxisSpacing: 12,
+                            childAspectRatio: 1.2,
+                          ),
+                          itemCount: service.additionalImages.length,
+                          itemBuilder: (context, index) {
+                            return ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: Image(
+                                image: _getImageProvider(service.additionalImages[index]),
+                                fit: BoxFit.cover,
+                              ),
+                            )
+                                .animate()
+                                .fadeIn(
+                                  duration: 400.ms,
+                                  delay: Duration(milliseconds: index * 50),
+                                )
+                                .scale(
+                                  begin: const Offset(0.9, 0.9),
+                                  delay: Duration(milliseconds: index * 50),
+                                );
+                          },
+                        ),
+                        const SizedBox(height: 32),
+                      ],
+                    ),
                   // Key Info Grid
                   Row(
                     children: [
@@ -274,7 +320,7 @@ class ServiceDetailPage extends ConsumerWidget {
                         end: Alignment.bottomRight,
                         colors: [
                           AppColors.primary.withAlpha(13),
-                          AppColors.secondary.withAlpha(13),
+                          AppColors.info.withAlpha(13),
                         ],
                       ),
                       borderRadius: BorderRadius.circular(16),

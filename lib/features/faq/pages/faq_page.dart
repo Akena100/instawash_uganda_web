@@ -155,7 +155,7 @@ class _FAQPageState extends State<FAQPage> {
               height: isMobile ? 350 : 450,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [AppColors.primary, AppColors.secondary],
+                  colors: [AppColors.primary, AppColors.info],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),

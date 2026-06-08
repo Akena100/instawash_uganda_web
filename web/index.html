@@ -18,19 +18,93 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Insta Wash Uganda - Your 360 Mobile Cleaning Partner">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Insta Wash Uganda - Your 360 Mobile Cleaning Partner. Professional cleaning services including car washing, home cleaning, laundry, and more across Uganda.">
+  <meta name="keywords" content="cleaning services Uganda, car wash, home cleaning, laundry, professional cleaning, mobile cleaning, Kampala cleaning, Insta Wash">
+  <meta name="author" content="Insta Wash Uganda">
+  <meta name="theme-color" content="#0066CC">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://intawashuganda.com/">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://intawashuganda.com/">
+  <meta property="og:title" content="Insta Wash Uganda - Professional 360 Mobile Cleaning Services">
+  <meta property="og:description" content="Your trusted cleaning partner for cars, homes, laundry, and more. Professional, reliable, and affordable cleaning services across Uganda.">
+  <meta property="og:image" content="https://intawashuganda.com/icons/logo.png">
+  <meta property="og:site_name" content="Insta Wash Uganda">
+  <meta property="og:locale" content="en_UG">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Insta Wash Uganda - Professional Cleaning Services">
+  <meta name="twitter:description" content="Professional 360 cleaning services - cars, homes, laundry & more. Fast, reliable, affordable.">
+  <meta name="twitter:image" content="https://intawashuganda.com/icons/logo.png">
+  
+  <!-- JSON-LD Structured Data for Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Insta Wash Uganda",
+    "description": "Professional 360 mobile cleaning services including car washing, home cleaning, laundry, and more.",
+    "url": "https://intawashuganda.com",
+    "telephone": "+256XXX-XXX-XXX",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Kampala",
+      "addressLocality": "Kampala",
+      "addressRegion": "Kampala",
+      "postalCode": "256",
+      "addressCountry": "UG"
+    },
+    "image": "https://intawashuganda.com/icons/logo.png",
+    "priceRange": "$$",
+    "areaServed": {
+      "@type": "City",
+      "name": "Kampala"
+    },
+    "sameAs": [
+      "https://www.facebook.com/intawashuganda",
+      "https://www.instagram.com/intawashuganda"
+    ]
+  }
+  </script>
+  
+  <!-- JSON-LD Structured Data for Services -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://intawashuganda.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://intawashuganda.com/services"
+      }
+    ]
+  }
+  </script>
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Insta Wash Uganda">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="apple-touch-icon" href="icons/logo.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="logo.png"/>
 
-  <title>Insta Wash Uganda</title>
+  <title>Insta Wash Uganda - Professional 360 Mobile Cleaning Services | Car Wash, Home Cleaning & Laundry</title>
   <link rel="manifest" href="manifest.json">
+  <link rel="sitemap" type="application/xml" href="sitemap.xml">
 
   <!-- Firebase Configuration -->
   <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
@@ -147,13 +221,13 @@
     .logo-box {
       width: 80px;
       height: 80px;
-      background: linear-gradient(135deg, #0066CC 0%, #0052A3 100%);
+      background: transparent;
       border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto;
-      box-shadow: 0 10px 40px rgba(0, 102, 204, 0.25);
+      box-shadow: none;
     }
 
     .logo-text {
@@ -161,6 +235,13 @@
       font-weight: 800;
       color: white;
       font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    }
+
+    .logo-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 16px;
     }
 
     .brand-name {
@@ -298,7 +379,7 @@
     <div class="loading-content">
       <div class="logo-container">
         <div class="logo-box">
-          <span class="logo-text">IW</span>
+          <img src="icons/logo.png" alt="Insta Wash Uganda" class="logo-image">
         </div>
       </div>
       <div class="brand-name">

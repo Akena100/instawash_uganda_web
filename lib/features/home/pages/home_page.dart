@@ -1,6 +1,5 @@
 
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -38,14 +37,14 @@ class HomePage extends ConsumerWidget {
       backgroundColor: isDarkMode ? const Color(0xFF0F1419) : AppColors.white,
       child: Column(
         children: [
+          Divider(height: 5, color: Colors.orangeAccent),
           // Local Video Hero Section with Muted Background
           const YouTubeHeroSection(
-            fallbackImagePath: 'assets/services/cleaning team.jpg',
+            fallbackImagePath: 'assets/services/office cleaning.jpg',
             isFullWidth: true,
           ),
-
-            // Animated Stats Section
-            const AnimatedStatsSection(),
+          
+          Divider(height: 5, color: Colors.orangeAccent),
 
             // Main Service Categories
             Container(
@@ -58,7 +57,7 @@ class HomePage extends ConsumerWidget {
               child: Column(
                 children: [
                   Text(
-                    'Our Main Services',
+                    'CHECK OUT OUR CORE SERVICES',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                       fontSize: isMobile ? 28 : 36,
@@ -69,19 +68,54 @@ class HomePage extends ConsumerWidget {
                       .animate()
                       .fadeIn(duration: 600.ms)
                       .slideY(begin: 0.2),
-                  const SizedBox(height: 14),
-                  Text(
-                    'See the six core service categories we deliver with strong visuals and easy WhatsApp booking.',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
-                      fontSize: isMobile ? 15 : 16,
-                      fontWeight: FontWeight.w400,
-                      color: isDarkMode ? const Color(0xFFB8C3D4) : AppColors.mediumGrey,
-                      height: 1.7,
-                    ),
-                  ).animate(delay: 100.ms).fadeIn(duration: 600.ms),
+                  
                   const SizedBox(height: 32),
                   _ServicePhotoCarousel(isMobile: isMobile),
+                ],
+              ),
+            ),
+
+            // Animated Stats Section
+            const AnimatedStatsSection(),
+
+            // KCCA Partnership Section
+            Container(
+              width: double.infinity,
+              color: isDarkMode ? const Color(0xFF0F1419) : AppColors.white,
+              padding: EdgeInsets.symmetric(
+                horizontal: isMobile ? 20 : 40,
+                vertical: isMobile ? 40 : 60,
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    'KCCA AND INSTA WASH PARTNERSHIP FOR KAMPALA STREETS AND ROAD CLEANING PILOT PROJECT',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      fontSize: isMobile ? 24 : 36,
+                      fontWeight: FontWeight.w700,
+                      color: isDarkMode ? const Color(0xFFE8EDF7) : AppColors.darkGrey,
+                    ),
+                  )
+                      .animate()
+                      .fadeIn(duration: 600.ms)
+                      .slideY(begin: 0.2),
+                  const SizedBox(height: 16),
+                  Text(
+                    'Transforming Kampala\'s urban spaces through professional cleaning services and community engagement initiatives',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      fontSize: isMobile ? 14 : 16,
+                      fontWeight: FontWeight.w400,
+                      color: isDarkMode ? const Color(0xFFB0BED9) : AppColors.mediumGrey,
+                      height: 1.6,
+                    ),
+                  )
+                      .animate()
+                      .fadeIn(duration: 600.ms)
+                      .slideY(begin: 0.2, delay: 100.ms),
+                  const SizedBox(height: 40),
+                  _KCCAImageCarousel(isMobile: isMobile, isDarkMode: isDarkMode),
                 ],
               ),
             ),
@@ -93,43 +127,142 @@ class HomePage extends ConsumerWidget {
             TestimonialCarousel(
               testimonials: [
                 Testimonial(
-                  name: 'John Doe',
+                  name: 'Daniel Ssemanda',
                   role: 'Business Owner',
                   comment: 'Outstanding service! The team was professional, punctual, and thorough. My office has never looked cleaner. Highly recommended!',
                   rating: 5,
                 ),
                 Testimonial(
-                  name: 'Sarah Wilson',
+                  name: 'Okello James',
                   role: 'Homeowner',
                   comment: 'I was impressed by the attention to detail. Every corner was cleaned meticulously. Worth every shilling!',
                   rating: 5,
                 ),
                 Testimonial(
-                  name: 'David Ouko',
+                  name: 'Brian Tumusiime Ainebyoona',
                   role: 'School Principal',
                   comment: 'Reliable and efficient team. They transformed our school facilities. Parents have noticed the difference!',
                   rating: 5,
                 ),
                 Testimonial(
-                  name: 'Emily Johnson',
+                  name: 'Nabwire Wafula',
                   role: 'Restaurant Manager',
                   comment: 'Professional and consistent. Our customers appreciate the clean environment. They\'re our go-to cleaning service.',
                   rating: 5,
                 ),
                 Testimonial(
-                  name: 'Michael Chen',
+                  name: 'Sarah Namusoke Nakiwogo',
                   role: 'Tech Startup CEO',
                   comment: 'Finally found a cleaning service that understands the needs of a modern office. Excellent work!',
                   rating: 5,
                 ),
                 Testimonial(
-                  name: 'Grace Nakamwi',
+                  name: 'Achen Florence',
                   role: 'Hotel Manager',
                   comment: 'Dependable service with amazing results. Our guests often compliment the cleanliness. Highly satisfied!',
                   rating: 5,
                 ),
               ],
             ),
+
+            // Trusted Clients Section
+            Container(
+              width: double.infinity,
+              color: isDarkMode ? const Color(0xFF1A2332) : AppColors.lightGrey,
+              padding: EdgeInsets.symmetric(
+                horizontal: isMobile ? 20 : 40,
+                vertical: isMobile ? 40 : 56,
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    'OUR CURRENT AND PAST CLIENTS',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      fontSize: isMobile ? 24 : 32,
+                      fontWeight: FontWeight.w700,
+                      color: isDarkMode ? const Color(0xFFE8EDF7) : AppColors.darkGrey,
+                    ),
+                  )
+                      .animate()
+                      .fadeIn(duration: 600.ms)
+                      .slideY(begin: 0.2),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Partnering with renowned organizations across Uganda',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: isDarkMode ? const Color(0xFFB0BED9) : AppColors.mediumGrey,
+                    ),
+                  )
+                      .animate()
+                      .fadeIn(duration: 600.ms)
+                      .slideY(begin: 0.2, delay: 100.ms),
+                  const SizedBox(height: 48),
+                  Wrap(
+                    spacing: isMobile ? 24 : 40,
+                    runSpacing: isMobile ? 32 : 48,
+                    alignment: WrapAlignment.center,
+                    children: [
+                      _ClientLogo(
+                        imagePath: 'assets/clients/afm.png',
+                        height: isMobile ? 100 : 140,
+                      ),
+                      _ClientLogo(
+                        imagePath: 'assets/clients/kcca.png',
+                        height: isMobile ? 100 : 140,
+                      ),
+                      _ClientLogo(
+                        imagePath: 'assets/clients/fotogenix.png',
+                        height: isMobile ? 100 : 140,
+                      ),
+                      _ClientLogo(
+                        imagePath: 'assets/clients/assosiation.png',
+                        height: isMobile ? 100 : 140,
+                      ),
+                      _ClientLogo(
+                        imagePath: 'assets/clients/kesington.png',
+                        height: isMobile ? 100 : 140,
+                      ),
+                      _ClientLogo(
+                        imagePath: 'assets/clients/timea.png',
+                        height: isMobile ? 100 : 140,
+                      ),
+                      _ClientLogo(
+                        imagePath: 'assets/clients/obunji.png',
+                        height: isMobile ? 100 : 140,
+                      ),
+                      _ClientLogo(
+                        imagePath: 'assets/clients/scania.png',
+                        height: isMobile ? 100 : 140,
+                      ),
+                      _ClientLogo(
+                        imagePath: 'assets/clients/rochester.png',
+                        height: isMobile ? 100 : 140,
+                      ),
+                      _ClientLogo(
+                        imagePath: 'assets/clients/EP.png',
+                        height: isMobile ? 100 : 140,
+                      ),
+                      _ClientLogo(
+                        imagePath: 'assets/clients/uwa.png',
+                        height: isMobile ? 100 : 140,
+                      ),
+                      _ClientLogo(
+                        imagePath: 'assets/clients/endelea.png',
+                        height: isMobile ? 100 : 140,
+                      ),
+                    ],
+                  )
+                      .animate()
+                      .fadeIn(duration: 800.ms)
+                      .slideY(begin: 0.3, delay: 200.ms),
+                ],
+              ),
+            ),
+
             // CTA Section
             Container(
               width: double.infinity,
@@ -175,7 +308,7 @@ class HomePage extends ConsumerWidget {
                   ElevatedButton(
                     onPressed: _openWhatsApp,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.secondary,
+                      backgroundColor: AppColors.info,
                       foregroundColor: AppColors.white,
                       elevation: 0,
                       padding: const EdgeInsets.symmetric(
@@ -228,34 +361,39 @@ class _ServicePhotoCarouselState extends State<_ServicePhotoCarousel> {
 
   final List<_ServiceCarouselItem> _items = const [
     _ServiceCarouselItem(
-      title: 'Home Cleaning',
+      title: 'RESIDENTIAL & HOME CARE SERVICES',
       description: 'Complete home care for kitchens, bedrooms, bathrooms and living areas.',
-      imagePath: 'assets/services/outdoor cleaning.jpg',
+      imagePath: 'assets/services/home cleaning.jpg',
+    ),
+_ServiceCarouselItem(
+  title: 'OFFICE CLEANING',
+  description: 'Routine cleaning and maintenance for offices, including desks, floors, and shared work areas.',
+  imagePath: 'assets/services/office cleaning.jpg',
+),
+_ServiceCarouselItem(
+  title: 'COMMERCIAL CLEANING',
+  description: 'Specialized cleaning for retail stores, malls, and high-traffic commercial spaces with customer-facing areas.',
+  imagePath: 'assets/services/commercial.jpg',
+),
+    _ServiceCarouselItem(
+      title: 'INDUSTRIAL CLEANING',
+      description: 'Expert INDUSTRIAL and warehouse cleaning services.',
+      imagePath: 'assets/services/warehouse.jpg',
     ),
     _ServiceCarouselItem(
-      title: 'Car Cleaning',
-      description: 'Exterior and interior detailing to keep your vehicle spotless.',
-      imagePath: 'assets/services/car exterior cleaning.jpg',
-    ),
-    _ServiceCarouselItem(
-      title: 'Pest Control',
-      description: 'Trusted pest removal for safer, cleaner homes and offices.',
-      imagePath: 'assets/services/pest control.jpg',
-    ),
-    _ServiceCarouselItem(
-      title: 'Waste & Garbage',
-      description: 'Efficient waste handling and garbage collection for all sites.',
-      imagePath: 'assets/services/road cleaning.jpg',
-    ),
-    _ServiceCarouselItem(
-      title: 'Specialized Cleaning',
+      title: 'SPECIALIZED CLEANING',
       description: 'Expert care for roofs, pavers and hard-to-reach surfaces.',
       imagePath: 'assets/services/pavers cleaning.jpg',
     ),
     _ServiceCarouselItem(
-      title: 'Commercial Cleaning',
-      description: 'Professional cleaning for offices, shops and commercial spaces.',
-      imagePath: 'assets/services/cleaning team.jpg',
+      title: 'FUMIGATION & PEST CONTROL',
+      description: 'Trusted pest removal for safer, cleaner homes and offices.',
+      imagePath: 'assets/services/pest control.jpg',
+    ),
+    _ServiceCarouselItem(
+      title: 'MOBILE AUTO & FLEET CLEANING',
+      description: 'Exterior and interior detailing to keep your vehicle spotless.',
+      imagePath: 'assets/services/car exterior cleaning.jpg',
     ),
   ];
 
@@ -321,9 +459,9 @@ class _ServicePhotoCarouselState extends State<_ServicePhotoCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    final cardHeight = widget.isMobile ? 420.0 : 360.0;
+    final cardHeight = widget.isMobile ? 340.0 : 360.0;
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    final itemWidth = widget.isMobile ? MediaQuery.of(context).size.width * 0.84 : MediaQuery.of(context).size.width * 0.52;
+    final itemWidth = widget.isMobile ? MediaQuery.of(context).size.width * 0.80 : MediaQuery.of(context).size.width * 0.52;
 
     return Column(
       children: [
@@ -405,7 +543,7 @@ class _ServicePhotoCarouselState extends State<_ServicePhotoCarousel> {
                                         ),
                                       ),
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor: AppColors.secondary,
+                                        backgroundColor: AppColors.info,
                                         foregroundColor: AppColors.white,
                                         padding: const EdgeInsets.symmetric(
                                           horizontal: 24,
@@ -466,9 +604,113 @@ class _ServicePhotoCarouselState extends State<_ServicePhotoCarousel> {
               height: 10,
               decoration: BoxDecoration(
                 color: isActive
-                    ? AppColors.secondary
+                    ? AppColors.info
                     : AppColors.white.withOpacity(isDarkMode ? 0.7 : 0.35),
                 borderRadius: BorderRadius.circular(10),
+              ),
+            );
+          }),
+        ),
+      ],
+    );
+  }
+}
+
+class _KCCAImageCarousel extends StatefulWidget {
+  final bool isMobile;
+  final bool isDarkMode;
+
+  const _KCCAImageCarousel({
+    required this.isMobile,
+    required this.isDarkMode,
+  });
+
+  @override
+  State<_KCCAImageCarousel> createState() => _KCCAImageCarouselState();
+}
+
+class _KCCAImageCarouselState extends State<_KCCAImageCarousel> {
+  late PageController _pageController;
+  int _currentPage = 0;
+  late Timer _autoScrollTimer;
+
+  final List<String> _images = [
+    'assets/KCCA/WhatsApp Image 2026-04-26 at 8.26.43 AM.jpeg',
+    'assets/KCCA/WhatsApp Image 2026-04-26 at 8.26.45 AM (1).jpeg',
+    'assets/KCCA/WhatsApp Image 2026-04-26 at 8.26.45 AM (2).jpeg',
+    'assets/KCCA/WhatsApp Image 2026-04-26 at 8.26.45 AM (3).jpeg',
+    'assets/KCCA/WhatsApp Image 2026-04-26 at 8.26.45 AM.jpeg',
+    'assets/KCCA/WhatsApp Image 2026-04-26 at 8.26.46 AM (1).jpeg',
+    'assets/KCCA/WhatsApp Image 2026-04-26 at 8.26.46 AM.jpeg',
+    'assets/KCCA/WhatsApp Image 2026-04-26 at 8.26.47 AM (1).jpeg',
+    'assets/KCCA/WhatsApp Image 2026-04-26 at 8.26.47 AM.jpeg',
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+    _startAutoScroll();
+  }
+
+  void _startAutoScroll() {
+    _autoScrollTimer = Timer.periodic(const Duration(seconds: 5), (timer) {
+      if (_pageController.hasClients) {
+        final nextPage = (_currentPage + 1) % _images.length;
+        _pageController.animateToPage(
+          nextPage,
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.easeInOut,
+        );
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _autoScrollTimer.cancel();
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: SizedBox(
+            height: widget.isMobile ? 320 : 450,
+            child: PageView.builder(
+              controller: _pageController,
+              onPageChanged: (page) {
+                setState(() => _currentPage = page);
+              },
+              itemCount: _images.length,
+              itemBuilder: (context, index) {
+                return Image.asset(
+                  _images[index],
+                  fit: BoxFit.cover,
+                )
+                    .animate()
+                    .fadeIn(duration: 500.ms);
+              },
+            ),
+          ),
+        ),
+        const SizedBox(height: 20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(_images.length, (index) {
+            final isActive = _currentPage == index;
+            return AnimatedContainer(
+              duration: const Duration(milliseconds: 250),
+              margin: const EdgeInsets.symmetric(horizontal: 6),
+              width: isActive ? 28 : 8,
+              height: 8,
+              decoration: BoxDecoration(
+                color: isActive ? AppColors.primary : AppColors.lightGrey,
+                borderRadius: BorderRadius.circular(4),
               ),
             );
           }),
@@ -488,4 +730,52 @@ class _ServiceCarouselItem {
     required this.description,
     required this.imagePath,
   });
+}
+
+class _ClientLogo extends StatelessWidget {
+  final String imagePath;
+  final double height;
+
+  const _ClientLogo({
+    required this.imagePath,
+    required this.height,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      width: height,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: AppColors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 16,
+            offset: const Offset(0, 6),
+          ),
+        ],
+      ),
+      child: Image.asset(
+        imagePath,
+        fit: BoxFit.contain,
+        errorBuilder: (context, error, stackTrace) {
+          return Center(
+            child: Text(
+              'Logo',
+              style: GoogleFonts.poppins(
+                fontSize: 12,
+                color: AppColors.mediumGrey,
+              ),
+            ),
+          );
+        },
+      ),
+    )
+        .animate()
+        .fadeIn(duration: 600.ms)
+        .scale(begin: const Offset(0.9, 0.9));
+  }
 }

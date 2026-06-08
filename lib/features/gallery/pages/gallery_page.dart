@@ -199,8 +199,9 @@ class _GalleryPageState extends ConsumerState<GalleryPage> {
                   ],
                   // Pictures Tab
                   if (tabIndex == 1) ...[
+                    // Places Section
                     Text(
-                      'Our Portfolio (${allPictures.length})',
+                      'SOME OF OUR BIG CLIENTS',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w700,
@@ -217,10 +218,36 @@ class _GalleryPageState extends ConsumerState<GalleryPage> {
                         mainAxisSpacing: 16,
                         childAspectRatio: 1,
                       ),
-                      itemCount: allPictures.length,
+                      itemCount: 4,
                       itemBuilder: (context, index) {
                         final picture = allPictures[index];
-                        return _PictureCard(picture: picture, isDark: isDarkMode);
+                        return _PictureCard(picture: picture, isDark: isDarkMode, showTitle: true);
+                      },
+                    ),
+                    const SizedBox(height: 60),
+                    // Portfolio Section
+                    Text(
+                      'Our Portfolio (${allPictures.length - 4})',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                        color: isDarkMode ? Colors.white : Colors.black,
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: isMobile ? 2 : 4,
+                        crossAxisSpacing: 16,
+                        mainAxisSpacing: 16,
+                        childAspectRatio: 1,
+                      ),
+                      itemCount: allPictures.length - 4,
+                      itemBuilder: (context, index) {
+                        final picture = allPictures[index + 4];
+                        return _PictureCard(picture: picture, isDark: isDarkMode, showTitle: false);
                       },
                     ),
                   ],
@@ -291,10 +318,12 @@ class _GalleryHeader extends StatelessWidget {
 class _PictureCard extends StatefulWidget {
   final dynamic picture;
   final bool isDark;
+  final bool showTitle;
 
   const _PictureCard({
     required this.picture,
     required this.isDark,
+    this.showTitle = false,
   });
 
   @override
@@ -394,6 +423,42 @@ class _PictureCardState extends State<_PictureCard> {
                       Icons.zoom_in,
                       color: Colors.white,
                       size: 32,
+                    ),
+                  ),
+                ),
+              // Gradient overlay with title at bottom (only for Places)
+              if (widget.showTitle)
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(12),
+                        bottomRight: Radius.circular(12),
+                      ),
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Colors.transparent,
+                          Colors.black.withOpacity(0.7),
+                        ],
+                      ),
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                    child: Text(
+                      widget.picture.title,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        height: 1.3,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),

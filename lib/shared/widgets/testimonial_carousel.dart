@@ -259,7 +259,7 @@ class _TestimonialCarouselState extends State<TestimonialCarousel> {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     gradient: LinearGradient(
-                      colors: [AppColors.primary, AppColors.secondary],
+                      colors: [AppColors.primary, AppColors.info],
                     ),
                   ),
                   child: Center(

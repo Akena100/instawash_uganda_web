@@ -397,7 +397,7 @@ class __SubscriptionCardState extends State<_SubscriptionCard> {
                         children: [
                           const Icon(
                             Icons.check_circle,
-                            color: AppColors.secondary,
+                            color: AppColors.info,
                             size: 18,
                           ),
                           const SizedBox(width: 8),

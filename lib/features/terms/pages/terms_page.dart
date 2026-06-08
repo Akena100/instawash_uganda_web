@@ -26,7 +26,7 @@ Application Account: Your account set up to use the Application.
 
 Customer: The person who purchases Services from Insta Wash Uganda.
 
-Services: Vehicle cleaning, Home care, Commercial cleaning, Garbage collection and disposal, Fumigation, and Pest control.
+Services: Vehicle cleaning, Home care, COMMERCIAL cleaning, Garbage collection and disposal, Fumigation, and Pest control.
 
 Subscription: The ongoing agreement under which you pay a fee to receive recurring Services.''',
     ),
@@ -45,10 +45,10 @@ Subscription: The ongoing agreement under which you pay a fee to receive recurri
           '''We provide Services with reasonable caution and professionalism, including:
 - Vehicle Cleaning Services (Exterior, interior, specialized treatments)
 - Home Care (General and deep cleaning)
-- Commercial Cleaning (Office spaces, retail outlets)
+- COMMERCIAL Cleaning (Office spaces, retail outlets)
 - Garbage Collection and Disposal
 - Fumigation & Pest Control
-- Specialized Industrial Cleaning''',
+- Specialized INDUSTRIAL Cleaning''',
     ),
     TermsSection(
       title: '4. Customer Obligations',
@@ -150,8 +150,8 @@ You may cancel your Subscription by providing 30 days written notice before the 
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    AppColors.secondary,
-                    AppColors.secondary.withOpacity(0.7),
+                    AppColors.info,
+                    AppColors.info.withOpacity(0.7),
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -270,7 +270,7 @@ You may cancel your Subscription by providing 30 days written notice before the 
                                           isActive
                                               ? Icons.expand_less_rounded
                                               : Icons.expand_more_rounded,
-                                          color: AppColors.secondary,
+                                          color: AppColors.info,
                                           size: 24,
                                         ),
                                       ),
@@ -335,7 +335,7 @@ You may cancel your Subscription by providing 30 days written notice before the 
                 color: isDarkMode ? const Color(0xFF1A2332) : AppColors.lightGrey,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: AppColors.secondary.withOpacity(0.3),
+                  color: AppColors.info.withOpacity(0.3),
                   width: 1,
                 ),
               ),
@@ -346,7 +346,7 @@ You may cancel your Subscription by providing 30 days written notice before the 
                     children: [
                       Icon(
                         Icons.info_rounded,
-                        color: AppColors.secondary,
+                        color: AppColors.info,
                         size: 24,
                       ),
                       const SizedBox(width: 12),
@@ -356,7 +356,7 @@ You may cancel your Subscription by providing 30 days written notice before the 
                           style: GoogleFonts.poppins(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
-                            color: AppColors.secondary,
+                            color: AppColors.info,
                           ),
                         ),
                       ),

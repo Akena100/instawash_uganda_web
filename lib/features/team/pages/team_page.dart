@@ -220,10 +220,10 @@ class TeamPage extends StatelessWidget {
     return [
       TeamMember(
         id: '16',
-        name: 'Dr. Franklin Higenyi',
+        name: 'Dr Franklin Higenyi',
         role: 'Chairperson Board / Director',
         department: 'Leadership',
-        imageUrl: '',
+        imageUrl: 'assets/team/franklin.png',
         bio: 'Providing strategic direction and governance for the board.',
         email: null,
         social: null,
@@ -231,9 +231,9 @@ class TeamPage extends StatelessWidget {
       TeamMember(
         id: '17',
         name: 'Ziwa Jeff',
-        role: 'Founder',
+        role: 'Founder | Director',
         department: 'Leadership',
-        imageUrl: 'assets/team/jeff ziwa.jpeg',
+        imageUrl: 'assets/team/jeff_ziwa.png',
         bio: 'Founder leading the company vision and market growth.',
         email: null,
         social: null,
@@ -243,7 +243,7 @@ class TeamPage extends StatelessWidget {
         name: 'Mariam Mirembe',
         role: 'Director',
         department: 'Leadership',
-        imageUrl: 'assets/team/miriam mirembe.jpeg',
+        imageUrl: 'assets/team/miriam_mirembe.png',
         bio: 'Director supporting executive leadership and operations.',
         email: null,
         social: null,
@@ -253,7 +253,7 @@ class TeamPage extends StatelessWidget {
         name: 'Ivy Kahunde',
         role: 'Head Operations & HR',
         department: 'Operations',
-        imageUrl: '',
+        imageUrl: 'assets/team/Ivy_Kahunde.png',
         bio: 'Leading people operations and human resources for the company.',
         email: null,
         social: null,
@@ -340,7 +340,7 @@ class _TeamMemberCardState extends State<_TeamMemberCard> {
                     image: _buildMemberImage(widget.member.imageUrl) != null
                         ? DecorationImage(
                             image: _buildMemberImage(widget.member.imageUrl)!,
-                            fit: BoxFit.cover,
+                            
                             onError: (exception, stackTrace) {},
                           )
                         : null,

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intawashuganda/core/constants/app_constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../core/theme/app_colors.dart';
-
 /// GIF-based hero section
 /// Displays animated GIF from assets
 class YouTubeHeroSection extends StatefulWidget {
@@ -20,7 +20,10 @@ class YouTubeHeroSection extends StatefulWidget {
   State<YouTubeHeroSection> createState() => _YouTubeHeroSectionState();
 }
 
-class _YouTubeHeroSectionState extends State<YouTubeHeroSection> {
+class _YouTubeHeroSectionState extends State<YouTubeHeroSection>
+    with TickerProviderStateMixin {
+  late AnimationController _marqueeController;
+
   Future<void> _openWhatsApp() async {
   final uri = Uri.parse(
     '${AppConstants.whatsappUrl}?text=${Uri.encodeComponent('Hello Insta Wash Uganda! I would like to book a service.')}',
@@ -34,10 +37,15 @@ class _YouTubeHeroSectionState extends State<YouTubeHeroSection> {
   @override
   void initState() {
     super.initState();
+    _marqueeController = AnimationController(
+      duration: const Duration(seconds: 20),
+      vsync: this,
+    )..repeat();
   }
 
   @override
   void dispose() {
+    _marqueeController.dispose();
     super.dispose();
   }
 
@@ -106,7 +114,7 @@ class _YouTubeHeroSectionState extends State<YouTubeHeroSection> {
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   colors: [
-                    AppColors.secondary.withOpacity(0.2),
+                    AppColors.info.withOpacity(0.2),
                     Colors.transparent,
                   ],
                 ),
@@ -140,65 +148,59 @@ class _YouTubeHeroSectionState extends State<YouTubeHeroSection> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         // Premium Badge with glassmorphism
-        Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 8,
-          ),
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.1),
-            border: Border.all(
-              color: Colors.white.withOpacity(0.3),
-              width: 1,
-            ),
-            borderRadius: BorderRadius.circular(24),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  color: AppColors.secondary,
-                  shape: BoxShape.circle,
-                ),
-              ),
-              const SizedBox(width: 8),
-              const Text(
-                'Premium Service',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 0.5,
-                ),
-              ),
-            ],
-          ),
-        )
-            .animate()
-            .fadeIn(duration: 600.ms),
-
+  
         SizedBox(height: isMobile ? 12 : 24),
 
-        // Main Tagline
-        Text(
-          'Your 360° Professional Cleaning Company',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: isMobile ? 28 : 56,
-            fontWeight: FontWeight.w800,
-            color: Colors.white,
-            height: 1.2,
-            shadows: [
-              Shadow(
-                color: Colors.black.withOpacity(0.5),
-                offset: const Offset(2, 2),
-                blurRadius: 4,
-              ),
-            ],
-          ),
+        // Main Tagline with Marquee Effect
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          physics: const NeverScrollableScrollPhysics(),
+          child: AnimatedBuilder(
+              animation: _marqueeController,
+              builder: (context, child) {
+                final offset = _marqueeController.value * 500;
+                return Transform.translate(
+                  offset: Offset(-offset, 0),
+                  child: Row(
+                    children: [
+                      Text(
+                        'YOUR 360° PROFESSIONAL CLEANING COMPANY, ANY TIME, ANYWHERE  •  ',
+                        style: TextStyle(
+                          fontSize: isMobile ? 20 : 42,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white,
+                          letterSpacing: 0.5,
+                          shadows: [
+                           
+                            Shadow(
+                              color: Colors.black.withOpacity(0.5),
+                              offset: const Offset(2, 2),
+                              blurRadius: 4,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Text(
+                        'YOUR 360° PROFESSIONAL CLEANING COMPANY, ANY TIME, ANYWHERE  •  ',
+                        style: TextStyle(
+                          fontSize: isMobile ? 20 : 42,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white,
+                          letterSpacing: 0.5,
+                          shadows: [
+                            Shadow(
+                              color: Colors.black.withOpacity(0.5),
+                              offset: const Offset(2, 2),
+                              blurRadius: 4,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
         )
             .animate(delay: 100.ms)
             .fadeIn(duration: 600.ms),
@@ -238,16 +240,17 @@ class _YouTubeHeroSectionState extends State<YouTubeHeroSection> {
 
             // Secondary CTA
             _buildCTAButton(
-              label: 'Learn More',
+              label: 'Get Quote',
               isPrimary: false,
               onPressed: () {
-                // TODO: Scroll to services section
+                context.go('/quote');
               },
             )
                 .animate(delay: 400.ms)
                 .fadeIn(duration: 600.ms),
           ],
         ),
+       
       ],
     );
   }

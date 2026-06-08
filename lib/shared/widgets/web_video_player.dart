@@ -172,7 +172,7 @@ class _WebVideoPlayerState extends State<WebVideoPlayer> {
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
                   onTap: () {
-                    html.window.open('https://www.youtube.com/@intawashuganda', 'youtube');
+                    html.window.open('https://www.youtube.com/@IntaWashUg', 'youtube');
                   },
                   child: Container(
                     decoration: BoxDecoration(

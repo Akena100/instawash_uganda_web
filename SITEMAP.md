@@ -61,12 +61,12 @@
    │
    ├─ Category Filter
    │  ├─ All Services
-   │  ├─ Residential
-   │  ├─ Commercial
-   │  ├─ Industrial
-   │  ├─ Auto Services
+   │  ├─ RESIDENTIAL
+   │  ├─ COMMERCIAL
+   │  ├─ INDUSTRIAL
+   │  ├─ AUTO SERVICES
    │  ├─ Laundry
-   │  └─ Waste Management
+   │  └─ WASTE MANAGEMENT
    │
    ├─ Services Grid (Dynamic)
    │  ├─ Service Card 1: Home Cleaning (150k)
@@ -80,12 +80,12 @@
    │  ├─ Service Card 9: Engine Wash (100k)
    │  ├─ Service Card 10: Laundry (20k)
    │  ├─ Service Card 11: Pest Control (300k)
-   │  └─ Service Card 12: Waste Management (100k)
+   │  └─ Service Card 12: WASTE MANAGEMENT (100k)
    │
    └─ Category Details
-      ├─ Residential Services Overview
-      ├─ Commercial Services Overview
-      ├─ Auto Services Overview
+      ├─ RESIDENTIAL Services Overview
+      ├─ COMMERCIAL Services Overview
+      ├─ AUTO SERVICES Overview
       └─ Specialist Services Overview
 
 ═══════════════════════════════════════════════════════════════
@@ -178,7 +178,7 @@
 
 5. WASTE MANAGEMENT PAGE (/waste)
    ├─ Hero Section
-   │  └─ ♻️ "Insta Trash - Eco-Friendly Waste Management"
+   │  └─ ♻️ "Insta Trash - Eco-Friendly WASTE MANAGEMENT"
    │
    ├─ About Insta Trash (Overview Cards)
    │  ├─ 🌍 Environmentally Friendly
@@ -230,7 +230,7 @@
    ├─ Left Section: Contact Info
    │  ├─ Contact Information
    │  │  ├─ 📍 Address: Kampala, Uganda
-   │  │  ├─ 📞 Phone: +256 700 123456
+   │  │  ├─ 📞 Phone: +256 741 074382
    │  │  └─ 📧 Email: info@intawashuganda.ug
    │  │
    │  ├─ Follow Us

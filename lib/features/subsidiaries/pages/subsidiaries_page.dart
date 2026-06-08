@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intawashuganda/core/theme/app_colors.dart';
 import 'package:intawashuganda/shared/widgets/fixed_header_layout.dart';
+import 'package:intawashuganda/shared/widgets/app_footer.dart';
 
 class SubsidiariesPage extends StatelessWidget {
   const SubsidiariesPage({super.key});
@@ -28,7 +29,7 @@ class SubsidiariesPage extends StatelessWidget {
                 gradient: LinearGradient(
                   colors: [
                     AppColors.primary,
-                    AppColors.secondary,
+                    AppColors.info,
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -117,87 +118,92 @@ class SubsidiariesPage extends StatelessWidget {
                     crossAxisCount: isMobile ? 1 : (screenWidth > 1200 ? 3 : 2),
                     mainAxisSpacing: 24,
                     crossAxisSpacing: 24,
-                    childAspectRatio: isMobile ? 1.0 : 1.1,
+                    childAspectRatio: isMobile ? 1.1 : 0.9,
                     children: [
                       _SubsidiaryCard(
-                        emoji: '�',
+                        emoji: 'assets/logo.png',
                         title: 'Insta Wash Mobile',
                         subtitle: 'Service Booking App',
                         description:
-                            'Mobile application for convenient booking of all our services. Schedule cleaning, waste management, security, and shopping services with just a few taps.',
+                            'Mobile application for convenient booking of all our services. Schedule cleaning, WASTE MANAGEMENT, security, and shopping services with just a few taps.',
                         color: AppColors.primary,
                         services: [
-                          'Easy Booking',
-                          'Real-Time Tracking',
-                          'Payment Options',
-                          'Customer Support',
+                          'EASY BOOKING',
+                          'REAL-TIME TRACKING',
+                          'PAYMENT OPTIONS',
+                          'CUSTOMER SUPPORT',
                         ],
-                        onLearnMore: () {},
+                        onLearnMore: () => context.go('/learn-more'),
                         delay: 0,
+                        isImage: true,
                       ),
                       _SubsidiaryCard(
-                        emoji: '🛡️',
+                        emoji: 'assets/Subsidiary Logos/shield.png',
                         title: 'Insta Shield',
                         subtitle: 'Professional Security Services',
                         description:
                             'Comprehensive security and protective services for your home and business. Trained security personnel ensuring safety and peace of mind.',
                         color: const Color(0xFF6366F1),
                         services: [
-                          'Security Patrols',
-                          'Alarm Systems',
-                          'Surveillance',
-                          'Access Control',
+                          'SECURITY PATROLS',
+                          'ALARM SYSTEMS',
+                          'SURVEILLANCE',
+                          'ACCESS CONTROL',
                         ],
-                        onLearnMore: () {},
+                        onLearnMore: () => context.go('/learn-more'),
                         delay: 100,
+                        isImage: true,
                       ),
                       _SubsidiaryCard(
-                        emoji: '♻️',
+                        emoji: 'assets/Subsidiary Logos/trash.png',
                         title: 'Insta Trash',
-                        subtitle: 'Eco-Friendly Waste Management',
+                        subtitle: 'Eco-Friendly WASTE MANAGEMENT',
                         description:
-                            'Sustainable waste management and recycling solutions. We handle your waste responsibly while protecting the environment for future generations.',
-                        color: AppColors.secondary,
+                            'Sustainable WASTE MANAGEMENT and recycling solutions. We handle your waste responsibly while protecting the environment for future generations.',
+                        color: AppColors.info,
                         services: [
-                          'Waste Pickup',
-                          'Recycling Programs',
-                          'Proper Sorting',
-                          'Environmental Impact',
+                          'WASTE PICKUP',
+                          'RECYCLING PROGRAMS',
+                          'PROPER SORTING',
+                          'ENVIRONMENTAL IMPACT',
                         ],
                         onLearnMore: () => context.go('/waste'),
                         delay: 200,
+                        isImage: true,
                       ),
                       _SubsidiaryCard(
-                        emoji: '🛍️',
+                        emoji: 'assets/Subsidiary Logos/shop.png',
                         title: 'Insta Shop',
                         subtitle: 'E-Commerce & Retail Solutions',
                         description:
                             'Your one-stop shop for cleaning supplies, equipment, and maintenance products. Quality items delivered directly to your doorstep.',
                         color: const Color(0xFFF59E0B),
                         services: [
-                          'Cleaning Supplies',
-                          'Equipment Rental',
-                          'Fast Delivery',
-                          'Expert Advice',
+                          'CLEANING SUPPLIES',
+                          'EQUIPMENT RENTAL',
+                          'FAST DELIVERY',
+                          'EXPERT ADVICE',
                         ],
-                        onLearnMore: () {},
+                        onLearnMore: () => context.go('/learn-more'),
                         delay: 300,
+                        isImage: true,
                       ),
                       _SubsidiaryCard(
-                        emoji: '📺',
+                        emoji: 'assets/Subsidiary Logos/show.png',
                         title: 'The Ultimate Cleaning Show',
                         subtitle: 'Educational & Entertainment Content',
                         description:
                             'Engaging video content, tips, and tutorials on professional cleaning techniques, home maintenance, and industry insights. Educational entertainment for all.',
                         color: const Color(0xFFEF4444),
                         services: [
-                          'Video Tutorials',
-                          'Industry Tips',
-                          'Behind The Scenes',
-                          'Expert Interviews',
+                          'VIDEO TUTORIALS',
+                          'INDUSTRY TIPS',
+                          'BEHIND THE SCENES',
+                          'EXPERT INTERVIEWS',
                         ],
-                        onLearnMore: () {},
+                        onLearnMore: () => context.go('/learn-more'),
                         delay: 400,
+                        isImage: true,
                       ),
                     ],
                   ),
@@ -452,7 +458,8 @@ class SubsidiariesPage extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 40),
+            // Footer
+            const AppFooter(),
           ],
         ),
     );
@@ -468,6 +475,7 @@ class _SubsidiaryCard extends StatefulWidget {
   final List<String> services;
   final VoidCallback onLearnMore;
   final int delay;
+  final bool isImage;
 
   const _SubsidiaryCard({
     required this.emoji,
@@ -478,6 +486,7 @@ class _SubsidiaryCard extends StatefulWidget {
     required this.services,
     required this.onLearnMore,
     required this.delay,
+    this.isImage = false,
   });
 
   @override
@@ -525,21 +534,52 @@ class _SubsidiaryCardState extends State<_SubsidiaryCard> {
                 ],
         ),
         child: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                widget.emoji,
-                style: const TextStyle(fontSize: 56),
-              )
-                  .animate(delay: Duration(milliseconds: widget.delay))
-                  .fadeIn(duration: 600.ms),
-              const SizedBox(height: 16),
+              if (widget.isImage)
+                Container(
+                  width: 140,
+                  height: 140,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: widget.color.withOpacity(0.15),
+                        blurRadius: 16,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                    border: Border.all(
+                      color: widget.color.withOpacity(0.1),
+                      width: 1.5,
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Image.asset(
+                      widget.emoji,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                )
+                    .animate(delay: Duration(milliseconds: widget.delay))
+                    .fadeIn(duration: 600.ms)
+                    .scale()
+              else
+                Text(
+                  widget.emoji,
+                  style: const TextStyle(fontSize: 48),
+                )
+                    .animate(delay: Duration(milliseconds: widget.delay))
+                    .fadeIn(duration: 600.ms),
+              const SizedBox(height: 20),
               Text(
                 widget.title,
                 style: GoogleFonts.poppins(
-                  fontSize: 24,
+                  fontSize: 22,
                   fontWeight: FontWeight.w700,
                   color: widget.color,
                 ),
@@ -559,7 +599,7 @@ class _SubsidiaryCardState extends State<_SubsidiaryCard> {
               )
                   .animate(delay: Duration(milliseconds: widget.delay + 200))
                   .fadeIn(duration: 600.ms),
-              const SizedBox(height: 16),
+              const SizedBox(height: 10),
               Text(
                 widget.description,
                 style: GoogleFonts.poppins(
@@ -572,62 +612,6 @@ class _SubsidiaryCardState extends State<_SubsidiaryCard> {
                 ),
               )
                   .animate(delay: Duration(milliseconds: widget.delay + 300))
-                  .fadeIn(duration: 600.ms),
-              const SizedBox(height: 20),
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: widget.services
-                    .map(
-                      (service) => Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 6,
-                        ),
-                        decoration: BoxDecoration(
-                          color: widget.color.withOpacity(0.1),
-                          border: Border.all(
-                            color: widget.color.withOpacity(0.3),
-                            width: 1,
-                          ),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Text(
-                          service,
-                          style: GoogleFonts.poppins(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                            color: widget.color,
-                          ),
-                        ),
-                      ),
-                    )
-                    .toList(),
-              )
-                  .animate(delay: Duration(milliseconds: widget.delay + 400))
-                  .fadeIn(duration: 600.ms),
-              const SizedBox(height: 20),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: widget.onLearnMore,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: widget.color,
-                    foregroundColor: AppColors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: Text(
-                    'Learn More',
-                    style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              )
-                  .animate(delay: Duration(milliseconds: widget.delay + 500))
                   .fadeIn(duration: 600.ms),
             ],
           ),
@@ -731,7 +715,7 @@ class _StatCard extends StatelessWidget {
         gradient: LinearGradient(
           colors: [
             AppColors.primary.withOpacity(0.1),
-            AppColors.secondary.withOpacity(0.1),
+            AppColors.info.withOpacity(0.1),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,

@@ -35,7 +35,7 @@
 - `/services` - Services Catalog
 - `/auto-cleaning` - Auto Cleaning Services
 - `/laundry` - Laundry Services
-- `/waste` - Waste Management (Insta Trash)
+- `/waste` - WASTE MANAGEMENT (Insta Trash)
 - `/contact` - Contact & Inquiry Form
 - `/booking` - Multi-Step Booking System
 
@@ -58,7 +58,7 @@
 - Full header/footer
 
 #### 2. **Services Page** - Catalog & Discovery
-- Category filtering (All, Residential, Commercial, etc.)
+- Category filtering (All, RESIDENTIAL, COMMERCIAL, etc.)
 - Dynamic grid with 12+ services
 - Service details: name, price, rating, duration, features
 - Detailed category sections with descriptions
@@ -84,7 +84,7 @@
 - 6 Service highlights
 - Responsive feature sections
 
-#### 5. **Waste Management Page** - Insta Trash
+#### 5. **WASTE MANAGEMENT Page** - Insta Trash
 - Overview cards (4 benefits)
 - 8 Waste categories with icons
 - 3 Subscription plans (Home/Business/Enterprise)

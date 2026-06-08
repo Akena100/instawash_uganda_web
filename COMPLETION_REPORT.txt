@@ -36,7 +36,7 @@ Responsive Breakpoints:    3 (mobile, tablet, desktop)
   ├─ Services: Categorized catalog with 12 services
   ├─ Auto Cleaning: Packages, before/after, timeline
   ├─ Laundry: Subscription plans, process steps
-  ├─ Waste Management: Insta Trash, categories, impact
+  ├─ WASTE MANAGEMENT: Insta Trash, categories, impact
   ├─ Contact: Form with validation and social links
   └─ Booking: 4-step multi-step form system
 
@@ -227,7 +227,7 @@ AUTO SERVICES:
 SPECIALIZED:
   - Laundry Service (20k)
   - Pest Control (300k)
-  - Waste Management (100k)
+  - WASTE MANAGEMENT (100k)
 
 ═══════════════════════════════════════════════════════════════════
 
@@ -308,7 +308,7 @@ PAGES:
   ✓ Services page (complete)
   ✓ Auto cleaning (complete)
   ✓ Laundry (complete)
-  ✓ Waste management (complete)
+  ✓ WASTE MANAGEMENT (complete)
   ✓ Contact page (complete)
   ✓ Booking page (complete)
 

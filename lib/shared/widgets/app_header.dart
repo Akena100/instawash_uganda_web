@@ -3,7 +3,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intawashuganda/core/constants/app_constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:intawashuganda/core/theme/app_colors.dart';
 import 'package:intawashuganda/core/providers/providers.dart';
@@ -19,16 +18,6 @@ class AppHeader extends ConsumerStatefulWidget {
 
 class _AppHeaderState extends ConsumerState<AppHeader> {
   final bool _scrollAwareTransparency = true;
-  
-  Future<void> _openWhatsApp() async {
-  final uri = Uri.parse(
-    '${AppConstants.whatsappUrl}?text=${Uri.encodeComponent('Hello Insta Wash Uganda! I would like to book a service.')}',
-  );
-
-  if (await canLaunchUrl(uri)) {
-    await launchUrl(uri, mode: LaunchMode.externalApplication);
-  }
-}
 
   @override
   void initState() {
@@ -74,8 +63,8 @@ class _AppHeaderState extends ConsumerState<AppHeader> {
                   children: [
                     Image.asset(
                       'assets/logo.png',
-                      width: 40,
-                      height: 40,
+                      width: 60,
+                      height: 60,
                       fit: BoxFit.contain,
                     ),
                     const SizedBox(width: 12),
@@ -104,7 +93,6 @@ class _AppHeaderState extends ConsumerState<AppHeader> {
                               color: textColor,
                               fontSize: 18,
                               fontWeight: FontWeight.w700,
-                              letterSpacing: 0.5,
                             ),
                           ),
                         ],
@@ -118,25 +106,34 @@ class _AppHeaderState extends ConsumerState<AppHeader> {
               Row(
                 children: [
                   _NavLink(label: 'Home', route: '/'),
+                  _NavLink(label: 'About Us', route: '/about'),
                   _NavLink(label: 'Services', route: '/services'),
-                  _NavDropdown(
-                    label: 'Company',
-                    items: const [
-                      ('Projects', '/projects'),
-                      ('Team', '/team'),
-                      ('Subsidiaries', '/subsidiaries'),
-                    ],
-                  ),
+                  _NavLink(label: 'Our Subsidiaries', route: '/subsidiaries'),
                   _NavLink(label: 'Gallery', route: '/gallery'),
-                  _NavLink(label: 'About', route: '/about'),
+                  _NavLink(label: 'Contact Us', route: '/contact'),
+                  // _NavLink(label: 'Projects', route: '/projects'),
+                  _NavLink(label: 'Team', route: '/team'),
                   _NavDropdown(
                     label: 'More',
                     items: const [
-                      ('Contact', '/contact'),
+                      // ('Learn More', '/learn-more'),
                       ('FAQ', '/faq'),
                       ('Privacy', '/privacy'),
                       ('Terms', '/terms'),
                     ],
+                  ),
+                  const SizedBox(width: 16),
+                  Consumer(
+                    builder: (context, ref, child) {
+                      final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+                      return _ThemeToggleSwitch(
+                        isDarkMode: isDarkMode,
+                        onChanged: (value) {
+                          final newMode = value ? ThemeMode.dark : ThemeMode.light;
+                          ref.read(themeModeProvider.notifier).state = newMode;
+                        },
+                      );
+                    },
                   ),
                 ],
               ),
@@ -144,8 +141,6 @@ class _AppHeaderState extends ConsumerState<AppHeader> {
             if (isMobile)
               Row(
                 children: [
-                  _ThemeToggle(ref: ref),
-                  const SizedBox(width: 12),
                   GestureDetector(
                     onTap: () => _showModernMenu(context),
                     child: Container(
@@ -166,20 +161,7 @@ class _AppHeaderState extends ConsumerState<AppHeader> {
                   ),
                 ],
               )
-            else
-              Row(
-                children: [
-                  _ThemeToggle(ref: ref),
-                  const SizedBox(width: 16),
-                  ElevatedButton(
-                    onPressed: _openWhatsApp,
-                    child: Text(
-                      'Book Now',
-                      style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
-                    ),
-                  ).animate().fadeIn(duration: 600.ms),
-                ],
-              ),
+
           ],
         ),
       ),
@@ -398,6 +380,10 @@ class ModernMobileMenu extends StatefulWidget {
 class _ModernMobileMenuState extends State<ModernMobileMenu> {
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final bgColor = isDarkMode ? const Color(0xFF0F1419) : AppColors.white;
+    final headerBgColor = isDarkMode ? const Color(0xFF1A2332) : const Color(0xFFF8FAFB);
+    
     return GestureDetector(
       onTap: () {}, // Prevent closing when tapping inside
       child: DraggableScrollableSheet(
@@ -407,14 +393,14 @@ class _ModernMobileMenuState extends State<ModernMobileMenu> {
         builder: (context, scrollController) {
           return Container(
             decoration: BoxDecoration(
-              color: AppColors.white,
+              color: bgColor,
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(30),
                 topRight: Radius.circular(30),
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
+                  color: Colors.black.withOpacity(isDarkMode ? 0.4 : 0.1),
                   blurRadius: 30,
                   offset: const Offset(0, -5),
                 ),
@@ -424,55 +410,133 @@ class _ModernMobileMenuState extends State<ModernMobileMenu> {
               children: [
                 // Drag Handle
                 Padding(
-                  padding: const EdgeInsets.only(top: 12, bottom: 20),
+                  padding: const EdgeInsets.only(top: 12, bottom: 16),
                   child: Container(
                     width: 48,
                     height: 4,
                     decoration: BoxDecoration(
-                      color: AppColors.lightGrey,
+                      color: isDarkMode 
+                          ? const Color(0xFF3A4555)
+                          : AppColors.lightGrey,
                       borderRadius: BorderRadius.circular(2),
                     ),
                   ),
                 ),
-                // Header
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 8,
+                // Logo Header Section
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: headerBgColor,
+                    borderRadius: BorderRadius.circular(16),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                  child: Column(
                     children: [
-                      Text(
-                        'Menu',
-                        style: GoogleFonts.poppins(
-                          fontSize: 28,
-                          fontWeight: FontWeight.w800,
-                          color: AppColors.darkGrey,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () => Navigator.pop(context),
-                        child: Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            color: AppColors.lightGrey,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: Icon(
-                              Icons.close_rounded,
-                              color: AppColors.darkGrey,
-                              size: 20,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          // Logo Section
+                          Expanded(
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Container(
+                                  width: 48,
+                                  height: 48,
+                                  decoration: BoxDecoration(
+                                    gradient: AppColors.primaryGradient,
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  padding: const EdgeInsets.all(4),
+                                  child: Image.asset(
+                                    'assets/logo.png',
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                                const SizedBox(width: 12),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'INSTA WASH',
+                                      style: GoogleFonts.poppins(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w700,
+                                        color: isDarkMode 
+                                            ? const Color(0xFFE8EDF7)
+                                            : AppColors.darkGrey,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Uganda',
+                                      style: GoogleFonts.poppins(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w500,
+                                        color: AppColors.primary,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
+                          // Controls
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Consumer(
+                                builder: (context, ref, child) {
+                                  final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+                                  return _ThemeToggleSwitch(
+                                    isDarkMode: isDarkMode,
+                                    onChanged: (value) {
+                                      final newMode = value ? ThemeMode.dark : ThemeMode.light;
+                                      ref.read(themeModeProvider.notifier).state = newMode;
+                                    },
+                                  );
+                                },
+                              ),
+                              const SizedBox(width: 8),
+                              GestureDetector(
+                                onTap: () => Navigator.pop(context),
+                                child: Container(
+                                  width: 40,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.primary.withOpacity(0.1),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Center(
+                                    child: Icon(
+                                      Icons.close_rounded,
+                                      color: AppColors.primary,
+                                      size: 20,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      Text(
+                        'Navigation',
+                        style: GoogleFonts.poppins(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          color: isDarkMode 
+                              ? const Color(0xFFB0BED9)
+                              : AppColors.mediumGrey,
+                          letterSpacing: 0.5,
                         ),
                       ),
                     ],
                   ),
-                ),
-                const SizedBox(height: 12),
+                ).animate().fadeIn(duration: 300.ms).slideY(begin: -0.2),
+                const SizedBox(height: 20),
                 // Menu Content
                 Expanded(
                   child: SingleChildScrollView(
@@ -486,41 +550,38 @@ class _ModernMobileMenuState extends State<ModernMobileMenu> {
                             label: 'Home',
                             route: '/',
                           ),
+                          index: 0,
                         ),
                         _MenuItemTile(
                           item: _MenuItem(
                             icon: Icons.info_rounded,
-                            label: 'About',
+                            label: 'About Us',
                             route: '/about',
                           ),
+                          index: 1,
                         ),
+                        // _MenuItemTile(
+                        //   item: _MenuItem(
+                        //     icon: Icons.explore_rounded,
+                        //     label: 'Learn More',
+                        //     route: '/learn-more',
+                        //   ),
+                        // ),
                         _MenuItemTile(
                           item: _MenuItem(
                             icon: Icons.business_rounded,
                             label: 'Services',
                             route: '/services',
                           ),
+                          index: 2,
                         ),
                         _MenuItemTile(
                           item: _MenuItem(
                             icon: Icons.apartment_rounded,
-                            label: 'Subsidiaries',
+                            label: 'Our Subsidiaries',
                             route: '/subsidiaries',
                           ),
-                        ),
-                        _MenuItemTile(
-                          item: _MenuItem(
-                            icon: Icons.image_rounded,
-                            label: 'Projects',
-                            route: '/projects',
-                          ),
-                        ),
-                        _MenuItemTile(
-                          item: _MenuItem(
-                            icon: Icons.people_rounded,
-                            label: 'Team',
-                            route: '/team',
-                          ),
+                          index: 3,
                         ),
                         _MenuItemTile(
                           item: _MenuItem(
@@ -528,13 +589,31 @@ class _ModernMobileMenuState extends State<ModernMobileMenu> {
                             label: 'Gallery',
                             route: '/gallery',
                           ),
+                          index: 4,
                         ),
                         _MenuItemTile(
                           item: _MenuItem(
                             icon: Icons.phone_rounded,
-                            label: 'Contact',
+                            label: 'Contact Us',
                             route: '/contact',
                           ),
+                          index: 5,
+                        ),
+                        // _MenuItemTile(
+                        //   item: _MenuItem(
+                        //     icon: Icons.image_rounded,
+                        //     label: 'Projects',
+                        //     route: '/projects',
+                        //   ),
+                        //   index: 6,
+                        // ),
+                        _MenuItemTile(
+                          item: _MenuItem(
+                            icon: Icons.people_rounded,
+                            label: 'Team',
+                            route: '/team',
+                          ),
+                          index: 7,
                         ),
                         _MenuItemTile(
                           item: _MenuItem(
@@ -542,6 +621,7 @@ class _ModernMobileMenuState extends State<ModernMobileMenu> {
                             label: 'FAQ',
                             route: '/faq',
                           ),
+                          index: 8,
                         ),
                         _MenuItemTile(
                           item: _MenuItem(
@@ -549,6 +629,7 @@ class _ModernMobileMenuState extends State<ModernMobileMenu> {
                             label: 'Privacy',
                             route: '/privacy',
                           ),
+                          index: 9,
                         ),
                         _MenuItemTile(
                           item: _MenuItem(
@@ -556,6 +637,7 @@ class _ModernMobileMenuState extends State<ModernMobileMenu> {
                             label: 'Terms',
                             route: '/terms',
                           ),
+                          index: 10,
                         ),
                         const SizedBox(height: 32),
                         // CTA Button
@@ -574,39 +656,46 @@ class _ModernMobileMenuState extends State<ModernMobileMenu> {
                                 );
                               }
                             },
-                            child:
-                                Container(
-                                      width: double.infinity,
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 16,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        gradient: AppColors.primaryGradient,
-                                        borderRadius: BorderRadius.circular(14),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: AppColors.primary
-                                                .withOpacity(0.3),
-                                            blurRadius: 12,
-                                            offset: const Offset(0, 8),
-                                          ),
-                                        ],
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          'Book Now',
-                                          style: GoogleFonts.poppins(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w700,
-                                            color: AppColors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                    .animate()
-                                    .fadeIn(duration: 400.ms)
-                                    .slideY(begin: 0.3),
-                          ),
+                            child: Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 16,
+                              ),
+                              decoration: BoxDecoration(
+                                gradient: AppColors.primaryGradient,
+                                borderRadius: BorderRadius.circular(14),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: AppColors.primary.withOpacity(0.3),
+                                    blurRadius: 12,
+                                    offset: const Offset(0, 8),
+                                  ),
+                                ],
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.chat_rounded,
+                                    color: AppColors.white,
+                                    size: 20,
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    'Book on WhatsApp',
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                              .animate()
+                              .fadeIn(duration: 400.ms)
+                              .slideY(begin: 0.3),
                         ),
                         const SizedBox(height: 24),
                       ],
@@ -637,8 +726,13 @@ class _MenuItem {
 class _MenuItemTile extends StatefulWidget {
   final _MenuItem item;
   final bool isSubItem;
+  final int index;
 
-  const _MenuItemTile({required this.item, this.isSubItem = false});
+  const _MenuItemTile({
+    required this.item,
+    this.isSubItem = false,
+    this.index = 0,
+  });
 
   @override
   State<_MenuItemTile> createState() => _MenuItemTileState();
@@ -646,9 +740,13 @@ class _MenuItemTile extends StatefulWidget {
 
 class _MenuItemTileState extends State<_MenuItemTile> {
   bool _isPressed = false;
+  bool _isHovered = false;
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final bgColor = isDarkMode ? const Color(0xFF1A2332) : const Color(0xFFF8FAFB);
+    
     return GestureDetector(
       onTapDown: (_) => setState(() => _isPressed = true),
       onTapUp: (_) => setState(() => _isPressed = false),
@@ -657,60 +755,91 @@ class _MenuItemTileState extends State<_MenuItemTile> {
         Navigator.pop(context);
         context.go(widget.item.route);
       },
-      child: AnimatedScale(
-        scale: _isPressed ? 0.98 : 1,
-        duration: const Duration(milliseconds: 100),
-        child: Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: widget.isSubItem ? 36 : 20,
-            vertical: 14,
-          ),
-          decoration: BoxDecoration(
-            color: _isPressed
-                ? AppColors.primary.withOpacity(0.08)
-                : Colors.transparent,
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Row(
-            children: [
-              Container(
-                width: 44,
-                height: 44,
-                decoration: BoxDecoration(
-                  color: AppColors.primary.withOpacity(0.12),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Center(
-                  child: Icon(
-                    widget.item.icon,
-                    color: AppColors.primary,
-                    size: 20,
-                  ),
+      child: MouseRegion(
+        onEnter: (_) => setState(() => _isHovered = true),
+        onExit: (_) => setState(() => _isHovered = false),
+        child: AnimatedScale(
+          scale: _isPressed ? 0.98 : 1,
+          duration: const Duration(milliseconds: 100),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: widget.isSubItem ? 16 : 16,
+                vertical: 14,
+              ),
+              decoration: BoxDecoration(
+                color: _isPressed || _isHovered
+                    ? AppColors.primary.withOpacity(0.08)
+                    : bgColor,
+                borderRadius: BorderRadius.circular(14),
+                border: Border.all(
+                  color: _isHovered
+                      ? AppColors.primary.withOpacity(0.2)
+                      : Colors.transparent,
+                  width: 1,
                 ),
               ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.item.label,
-                      style: GoogleFonts.poppins(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.darkGrey,
+              child: Row(
+                children: [
+                  AnimatedContainer(
+                    duration: const Duration(milliseconds: 200),
+                    width: 44,
+                    height: 44,
+                    decoration: BoxDecoration(
+                      color: _isHovered
+                          ? AppColors.primary.withOpacity(0.18)
+                          : AppColors.primary.withOpacity(0.12),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        widget.item.icon,
+                        color: AppColors.primary,
+                        size: 20,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.item.label,
+                          style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: isDarkMode
+                                ? const Color(0xFFE8EDF7)
+                                : AppColors.darkGrey,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  AnimatedOpacity(
+                    opacity: _isHovered ? 1 : 0.6,
+                    duration: const Duration(milliseconds: 200),
+                    child: Icon(
+                      Icons.arrow_forward_rounded,
+                      color: AppColors.primary,
+                      size: 18,
+                    ),
+                  ),
+                ],
               ),
-              Icon(
-                Icons.arrow_forward_rounded,
-                color: AppColors.primary.withOpacity(0.6),
-                size: 18,
+            ),
+          )
+              .animate()
+              .fadeIn(
+                duration: 400.ms,
+                delay: Duration(milliseconds: 50 * widget.index),
+              )
+              .slideX(
+                begin: -0.2,
+                delay: Duration(milliseconds: 50 * widget.index),
               ),
-            ],
-          ),
         ),
       ),
     );
@@ -915,6 +1044,38 @@ class _ThemeToggleState extends State<_ThemeToggle> {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _ThemeToggleSwitch extends StatelessWidget {
+  final bool isDarkMode;
+  final Function(bool) onChanged;
+
+  const _ThemeToggleSwitch({
+    required this.isDarkMode,
+    required this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: AppColors.primary.withOpacity(0.3),
+          width: 2,
+        ),
+      ),
+      child: Switch(
+        value: isDarkMode,
+        onChanged: onChanged,
+        activeThumbColor: AppColors.primary,
+        activeTrackColor: AppColors.primary.withOpacity(0.3),
+        inactiveThumbColor: AppColors.primary.withOpacity(0.6),
+        inactiveTrackColor: AppColors.primary.withOpacity(0.15),
+        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
     );
   }

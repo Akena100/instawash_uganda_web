@@ -15,6 +15,8 @@ import 'package:intawashuganda/features/team/pages/team_page.dart';
 import 'package:intawashuganda/features/projects/pages/projects_page.dart';
 import 'package:intawashuganda/features/gallery/pages/gallery_page.dart';
 import 'package:intawashuganda/features/about/pages/about_page.dart';
+import 'package:intawashuganda/features/learn_more/pages/learn_more_page.dart';
+import 'package:intawashuganda/features/quote/pages/quote_page.dart';
 
 class AppRouter {
   static const String home = '/';
@@ -32,6 +34,8 @@ class AppRouter {
   static const String contact = '/contact';
   static const String team = '/team';
   static const String gallery = '/gallery';
+  static const String learnMore = '/learn-more';
+  static const String quote = '/quote';
 
   static final GoRouter router = GoRouter(
     initialLocation: home,
@@ -68,6 +72,14 @@ class AppRouter {
         builder: (context, state) => const ProjectsPage(),
       ),
       GoRoute(path: about, builder: (context, state) => const AboutPage()),
+      GoRoute(
+        path: learnMore,
+        builder: (context, state) => const LearnMorePage(),
+      ),
+      GoRoute(
+        path: quote,
+        builder: (context, state) => const QuotePage(),
+      ),
       GoRoute(
         path: gallery,
         builder: (context, state) {

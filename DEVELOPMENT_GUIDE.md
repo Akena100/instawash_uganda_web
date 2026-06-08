@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This is a modern, high-performance Flutter Web Application for **Insta Wash Uganda** - a comprehensive cleaning services company offering residential, commercial, industrial, auto, laundry, and waste management services.
+This is a modern, high-performance Flutter Web Application for **Insta Wash Uganda** - a comprehensive cleaning services company offering RESIDENTIAL, COMMERCIAL, INDUSTRIAL, auto, laundry, and WASTE MANAGEMENT services.
 
 ## 🎯 Features
 
@@ -11,7 +11,7 @@ This is a modern, high-performance Flutter Web Application for **Insta Wash Ugan
 - **Services** (`/services`) - Full service catalog with category filtering
 - **Auto Cleaning** (`/auto-cleaning`) - Mobile auto detailing showcase and packages
 - **Laundry** (`/laundry`) - Professional laundry services with subscription plans
-- **Waste Management** (`/waste`) - Eco-friendly waste management (Insta Trash)
+- **WASTE MANAGEMENT** (`/waste`) - Eco-friendly WASTE MANAGEMENT (Insta Trash)
 - **Contact** (`/contact`) - Contact form and information
 - **Booking** (`/booking`) - Multi-step interactive booking system
 
@@ -157,7 +157,7 @@ Desktop:   > 1200px
 ```dart
 // Colors
 AppColors.primary          // #0066CC
-AppColors.secondary        // #00AA33
+AppColors.info        // #00AA33
 AppColors.white/darkGrey   // Neutrals
 
 // Typography
@@ -208,8 +208,8 @@ context.go('/booking');
 
 For questions or issues:
 - Email: info@intawashuganda.ug
-- Phone: +256 700 123456
-- WhatsApp: +256 700 123456
+- Phone: +256 741 074382
+- WhatsApp: +256 741 074382
 
 ## 📄 License
 

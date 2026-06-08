@@ -3,7 +3,7 @@ class AppConstants {
   static const String appName = 'Insta Wash Uganda';
   static const String appTagline = 'Your 360 Mobile Cleaning Partner';
   static const String appDescription =
-      'Professional cleaning services for residential, commercial, industrial, and automotive needs';
+      'Professional cleaning services for RESIDENTIAL, COMMERCIAL, INDUSTRIAL, and automotive needs';
 
   // Contact Info
   static const String email = 'instawashuganda@gmail.com';
@@ -14,16 +14,15 @@ class AppConstants {
   static const String facebookUrl = 'https://facebook.com/intawash';
   static const String instagramUrl = 'https://instagram.com/intawash';
   static const String twitterUrl = 'https://twitter.com/intawash';
-  static const String whatsappUrl = 'https://wa.me/256700123456';
+  static const String whatsappUrl = 'https://wa.me/qr/QYARTG3JEE66P1';
 
   // Service Categories
   static const List<String> serviceCategories = [
-    'Residential',
-    'Commercial',
-    'Industrial',
-    'Auto Services',
-    'Laundry',
-    'Waste Management',
+    'RESIDENTIAL',
+    'COMMERCIAL',
+    'SPECIALIZED',
+    'FUMIGATION AND PEST CONTROL',
+    'GARBAGE COLLECTION AND DISPOSAL',
   ];
 
   // Features List
@@ -53,7 +52,7 @@ class AppConstants {
     {
       'name': 'Peter Ouma',
       'role': 'Factory Manager',
-      'text': 'Reliable, efficient, and cost-effective. Perfect for our industrial cleaning needs.',
+      'text': 'Reliable, efficient, and cost-effective. Perfect for our INDUSTRIAL cleaning needs.',
       'rating': '5',
     },
   ];

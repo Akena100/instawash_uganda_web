@@ -48,8 +48,7 @@ class AppFooter extends StatelessWidget {
                 title: 'Services',
                 items: [
                   _FooterLink(label: 'All Services', route: '/services'),
-                  _FooterLink(label: 'Auto Cleaning', route: '/auto-cleaning'),
-                  _FooterLink(label: 'Laundry', route: '/laundry'),
+                
                   _FooterLink(label: 'Waste Management', route: '/waste'),
                   _FooterLink(label: 'Book Now', route: '/services'),
                 ],
@@ -134,12 +133,21 @@ class AppFooter extends StatelessWidget {
                           url: 'https://www.tiktok.com/@insta.wash.uganda?_r=1&_t=ZS-95ar3Wf2cJU',
                           color: Colors.black,
                         ),
-                        const SizedBox(width: 16),
+                      
+                         const SizedBox(width: 12),
                         _SocialIcon(
-                          icon: FontAwesomeIcons.whatsapp,
-                          url: 'https://wa.me/qr/QYARTG3JEE66P1',
-                          color: const Color(0xFF25D366),
+                          icon: FontAwesomeIcons.linkedin,
+                          url: 'https://www.linkedin.com/in/insta-wash-uganda-087b47317/',
+                          color: const Color.fromARGB(255, 35, 108, 203),
                         ),
+                        const SizedBox(width: 12),
+                        _SocialIcon(
+                          icon: FontAwesomeIcons.xTwitter,
+                          url: 'https://x.com/InstaWashUg',
+                          color: Colors.black,
+                        ),
+                        SizedBox(width: 30,),
+                        
                       ],
                     ),
                   ],
@@ -175,14 +183,22 @@ class AppFooter extends StatelessWidget {
                           url: 'https://www.tiktok.com/@insta.wash.uganda?_r=1&_t=ZS-95ar3Wf2cJU',
                           color: Colors.black,
                         ),
+                       
                         const SizedBox(width: 12),
                         _SocialIcon(
-                          icon: FontAwesomeIcons.whatsapp,
-                          url: 'https://wa.me/qr/QYARTG3JEE66P1',
-                          color: const Color(0xFF25D366),
+                          icon: FontAwesomeIcons.linkedin,
+                          url: 'https://www.linkedin.com/in/insta-wash-uganda-087b47317/',
+                          color: const Color.fromARGB(255, 35, 108, 203),
+                        ),
+                        const SizedBox(width: 12),
+                        _SocialIcon(
+                          icon: FontAwesomeIcons.xTwitter,
+                          url: 'https://x.com/InstaWashUg',
+                          color: Colors.black,
                         ),
                       ],
                     ),
+                    SizedBox(width: 20,),
                   ],
                 ),
         ],
@@ -260,7 +276,7 @@ class _FooterLinkState extends State<_FooterLink> {
             fontSize: 14,
             fontWeight: FontWeight.w500,
             color: _isHovered
-                ? AppColors.secondary
+                ? AppColors.info
                 : Colors.white.withAlpha(220),
           ),
           curve: Curves.easeInOut,
@@ -272,7 +288,7 @@ class _FooterLinkState extends State<_FooterLink> {
 }
 
 class _FooterContactInfo extends StatelessWidget {
-  final IconData icon;
+  final FaIconData icon;
   final String label;
   final String? url;
 
@@ -304,7 +320,7 @@ class _FooterContactInfo extends StatelessWidget {
           FaIcon(
             icon,
             size: 18,
-            color: AppColors.secondary,
+            color: AppColors.info,
           ),
           const SizedBox(width: 10),
           Flexible(
@@ -325,7 +341,7 @@ class _FooterContactInfo extends StatelessWidget {
 }
 
 class _SocialIcon extends StatefulWidget {
-  final IconData icon;
+  final FaIconData icon;
   final String url;
   final Color color;
 

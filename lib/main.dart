@@ -7,6 +7,7 @@ import 'package:intawashuganda/core/router/app_router.dart';
 import 'package:intawashuganda/core/theme/app_theme.dart';
 import 'package:intawashuganda/core/providers/providers.dart';
 import 'package:intawashuganda/shared/widgets/custom_cursor_overlay.dart';
+import 'package:intawashuganda/shared/widgets/floating_whatsapp_button.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'firebase_options.dart';
 
@@ -46,10 +47,22 @@ class MyApp extends ConsumerWidget {
         // Wrap with custom cursor overlay on desktop platforms and web desktop browsers only.
         // Disable on mobile web and mobile apps since touch screens do not use a cursor.
         bool shouldShowCursor = (_isDesktopPlatform() || _isWebDesktopPlatform()) && child != null;
+        
+        Widget wrappedChild = child ?? const SizedBox();
+        
         if (shouldShowCursor) {
-          return CustomCursorOverlay(child: child);
+          wrappedChild = CustomCursorOverlay(child: wrappedChild);
         }
-        return child ?? const SizedBox();
+        
+        // Add WhatsApp floating button on top of all pages
+        return Stack(
+          children: [
+            wrappedChild,
+            const FloatingWhatsAppButton(
+              phoneNumber: '256741074382', // Replace with your WhatsApp number
+            ),
+          ],
+        );
       },
     );
   }

@@ -97,7 +97,7 @@ class _ContactPageState extends State<ContactPage> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              backgroundColor: AppColors.secondary,
+              backgroundColor: AppColors.info,
               behavior: SnackBarBehavior.floating,
             ),
           );
@@ -139,7 +139,7 @@ class _ContactPageState extends State<ContactPage> {
                         ]
                       : [
                           AppColors.primary.withOpacity(0.1),
-                          AppColors.secondary.withOpacity(0.05),
+                          AppColors.info.withOpacity(0.05),
                         ],
                 ),
               ),
@@ -288,6 +288,18 @@ class _ContactPageState extends State<ContactPage> {
               color: const Color(0xFF25D366),
               url: 'https://wa.me/qr/QYARTG3JEE66P1',
             ),
+             const SizedBox(width: 16),
+                        _SocialIconButton(
+                          icon: FontAwesomeIcons.linkedin,
+                          url: 'https://www.linkedin.com/in/insta-wash-uganda-087b47317/',
+                          color: const Color.fromARGB(255, 35, 108, 203),
+                        ),
+                        const SizedBox(width: 16),
+                        _SocialIconButton(
+                          icon: FontAwesomeIcons.xTwitter,
+                          url: 'https://x.com/InstaWashUg',
+                          color: Colors.black,
+                        ),
           ],
         ),
       ],
@@ -339,7 +351,7 @@ class _ContactPageState extends State<ContactPage> {
           _buildFormField(
             controller: _phoneController,
             label: 'Phone Number',
-            hint: '+256 700 123456',
+            hint: '+256 741 074382',
             icon: FontAwesomeIcons.phone,
             validator: (value) {
               if (value?.isEmpty ?? true) {
@@ -416,7 +428,7 @@ class _ContactPageState extends State<ContactPage> {
     required TextEditingController controller,
     required String label,
     required String hint,
-    required IconData icon,
+    required FaIconData icon,
     required String? Function(String?) validator,
     int maxLines = 1,
   }) {
@@ -589,7 +601,7 @@ class _ContactPageState extends State<ContactPage> {
 }
 
 class _ContactInfoCard extends StatefulWidget {
-  final IconData icon;
+  final FaIconData icon;
   final String title;
   final String content;
   final Color color;
@@ -700,7 +712,7 @@ class _ContactInfoCardState extends State<_ContactInfoCard> {
 }
 
 class _SocialIconButton extends StatefulWidget {
-  final IconData icon;
+  final FaIconData icon;
   final Color color;
   final String url;
 

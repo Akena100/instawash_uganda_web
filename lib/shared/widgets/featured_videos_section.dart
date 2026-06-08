@@ -35,10 +35,10 @@ class FeaturedVideosSection extends ConsumerWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 decoration: BoxDecoration(
-                  color: AppColors.secondary.withOpacity(0.1),
+                  color: AppColors.info.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(24),
                   border: Border.all(
-                    color: AppColors.secondary.withOpacity(0.3),
+                    color: AppColors.info.withOpacity(0.3),
                     width: 1,
                   ),
                 ),
@@ -48,7 +48,7 @@ class FeaturedVideosSection extends ConsumerWidget {
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 1,
-                    color: AppColors.secondary,
+                    color: AppColors.info,
                   ),
                 ),
               )

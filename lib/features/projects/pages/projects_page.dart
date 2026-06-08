@@ -31,7 +31,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
     final isTablet =
         MediaQuery.of(context).size.width >= 800 && MediaQuery.of(context).size.width < 1200;
 
-    final categories = ['All', 'Residential', 'Commercial', 'Industrial', 'Special'];
+    final categories = ['All', 'RESIDENTIAL', 'COMMERCIAL', 'INDUSTRIAL', 'Special'];
     final filteredProjects = _selectedCategory == 'All'
         ? _projects
         : _projects.where((p) => p.category == _selectedCategory).toList();
@@ -178,7 +178,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
               ),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [AppColors.primary.withOpacity(0.1), AppColors.secondary.withOpacity(0.1)],
+                  colors: [AppColors.primary.withOpacity(0.1), AppColors.info.withOpacity(0.1)],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
@@ -299,7 +299,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
         id: '1',
         title: 'Corporate Office Complex Renovation',
         description: 'Complete deep cleaning and maintenance of a 50,000 sq ft office complex',
-        category: 'Commercial',
+        category: 'COMMERCIAL',
         client: 'Kampala Business Center',
         imageUrl:
             'assets/services/road cleaning.jpg',
@@ -313,12 +313,12 @@ class _ProjectsPageState extends State<ProjectsPage> {
       Project(
         id: '2',
         title: 'Manufacturing Facility Cleaning',
-        description: 'Industrial-scale cleaning for manufacturing plant maintenance',
-        category: 'Industrial',
-        client: 'Uganda Industrial Works',
+        description: 'INDUSTRIAL-scale cleaning for manufacturing plant maintenance',
+        category: 'INDUSTRIAL',
+        client: 'Uganda INDUSTRIAL Works',
         imageUrl:
-            'assets/services/cleaning team.jpg',
-        services: ['Industrial Cleaning', 'Equipment Maintenance', 'Floor Cleaning'],
+            'assets/services/office cleaning.jpg',
+        services: ['INDUSTRIAL Cleaning', 'Equipment Maintenance', 'Floor Cleaning'],
         outcome: 'Production efficiency improved by 15% through better facility maintenance',
         completionDate: 'February 2024',
         testimonial:
@@ -327,13 +327,13 @@ class _ProjectsPageState extends State<ProjectsPage> {
       ),
       Project(
         id: '3',
-        title: 'Residential Estate Development',
-        description: 'Complete cleaning for 200-unit residential estate',
-        category: 'Residential',
+        title: 'RESIDENTIAL Estate Development',
+        description: 'Complete cleaning for 200-unit RESIDENTIAL estate',
+        category: 'RESIDENTIAL',
         client: 'Kampala Heights Estate',
         imageUrl:
             'assets/services/outdoor cleaning.jpg',
-        services: ['Residential Cleaning', 'Landscaping', 'Window Cleaning'],
+        services: ['RESIDENTIAL Cleaning', 'Landscaping', 'Window Cleaning'],
         outcome: 'Estate residents 100% satisfied, zero complaints received',
         completionDate: 'January 2024',
         testimonial: 'Insta Wash is our go-to cleaning partner. Reliable and efficient!',
@@ -343,7 +343,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
         id: '4',
         title: 'Shopping Mall Deep Clean',
         description: 'Comprehensive cleaning of large shopping center',
-        category: 'Commercial',
+        category: 'COMMERCIAL',
         client: 'Nairobi Plaza Kampala',
         imageUrl:
             'assets/services/road cleaning.jpg',
@@ -360,7 +360,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
         category: 'Special',
         client: 'Kampala Medical Hospital',
         imageUrl:
-            'assets/services/cleaning team.jpg',
+            'assets/services/office cleaning.jpg',
         services: ['Medical Sanitization', 'Pest Control', 'Specialized Cleaning'],
         outcome: 'Hospital infection rates reduced by 40%, patient satisfaction improved',
         completionDate: 'November 2023',
@@ -387,7 +387,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
         id: '7',
         title: 'School Campus Cleaning Program',
         description: 'Monthly comprehensive cleaning for educational institution',
-        category: 'Residential',
+        category: 'RESIDENTIAL',
         client: 'St. Mary\'s School Kampala',
         imageUrl:
             'https://images.unsplash.com/photo-1427504494937-7e6d6813fd30?w=600&h=600&fit=crop',
@@ -402,7 +402,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
         id: '8',
         title: 'Restaurant Kitchen Deep Clean',
         description: 'Professional kitchen cleaning and sanitization for fine dining restaurant',
-        category: 'Commercial',
+        category: 'COMMERCIAL',
         client: 'The Pearl Restaurant',
         imageUrl:
             'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=600&fit=crop',
@@ -416,7 +416,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
         id: '9',
         title: 'Data Center Facility Cleaning',
         description: 'Specialized cleaning for critical tech infrastructure',
-        category: 'Industrial',
+        category: 'INDUSTRIAL',
         client: 'Kampala Tech Park',
         imageUrl:
             'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=600&fit=crop',

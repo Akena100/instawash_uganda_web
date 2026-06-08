@@ -10,12 +10,12 @@ I’ve structured it like a real production project (not basic), including archi
 
 **Insta Wash Uganda** is a comprehensive cleaning services company offering professional solutions for:
 
-- ✅ **Residential Cleaning** - Home cleaning, gardening, water tank services
-- ✅ **Commercial Services** - Office, hospital, school, and mall cleaning
-- ✅ **Industrial Cleaning** - Factories, warehouses, industrial facilities  
-- ✅ **Mobile Auto Services** - Interior/exterior car wash, engine detailing
+- ✅ **RESIDENTIAL Cleaning** - Home cleaning, gardening, water tank services
+- ✅ **COMMERCIAL Services** - Office, hospital, school, and mall cleaning
+- ✅ **INDUSTRIAL Cleaning** - Factories, warehouses, INDUSTRIAL facilities  
+- ✅ **Mobile AUTO SERVICES** - Interior/exterior car wash, engine detailing
 - ✅ **Professional Laundry** - Premium laundry with subscription plans
-- ✅ **Waste Management** - Eco-friendly waste disposal (Insta Trash)
+- ✅ **WASTE MANAGEMENT** - Eco-friendly waste disposal (Insta Trash)
 
 This is a **production-ready Flutter Web Application** with:
 
@@ -168,20 +168,20 @@ lib/
 
 Split into categories:
 
-#### Residential
+#### RESIDENTIAL
 
 * Home cleaning
 * Gardening
 * Water tank cleaning
 
-#### Commercial
+#### COMMERCIAL
 
 * Office cleaning
 * Hospitals
 * Schools
 * Malls
 
-#### Industrial
+#### INDUSTRIAL
 
 * Warehouses
 * Factories
@@ -189,10 +189,10 @@ Split into categories:
 #### Specialized
 
 * Pest control
-* Waste management
+* WASTE MANAGEMENT
 * Event cleaning
 
-#### Auto Services
+#### AUTO SERVICES
 
 * Interior cleaning
 * Exterior cleaning
@@ -216,7 +216,7 @@ Split into categories:
 
 ---
 
-### ♻️ Waste Management Page
+### ♻️ WASTE MANAGEMENT Page
 
 * Insta Trash system
 * Subscription model
